@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+</head>
+<body>
+    <main>
+        <h1>Create an account</h1>
+
+        <form action="/register" method="post" autocomplete="on">
+            <fieldset>
+                <legend>Account details</legend>
+
+                <div>
+                    <label for="username">Username</label><br>
+                    <input id="username" name="username" type="text" required minlength="3" maxlength="30" autocomplete="username" />
+                </div>
+
+                <div>
+                    <label for="email">Email</label><br>
+                    <input id="email" name="email" type="email" required autocomplete="email" />
+                </div>
+
+                <div>
+                    <label for="password">Password</label><br>
+                    <input id="password" name="password" type="password" required minlength="8" aria-describedby="pwHelp" autocomplete="new-password" />
+                    <div id="pwHelp">Minimum 8 characters.</div>
+                </div>
+
+                <div>
+                    <label for="confirm_password">Confirm password</label><br>
+                    <input id="confirm_password" name="confirm_password" type="password" required minlength="8" autocomplete="new-password" />
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Personal info (optional)</legend>
+
+                <div>
+                    <label for="first_name">First name</label><br>
+                    <input id="first_name" name="first_name" type="text" autocomplete="given-name" />
+                </div>
+
+                <div>
+                    <label for="last_name">Last name</label><br>
+                    <input id="last_name" name="last_name" type="text" autocomplete="family-name" />
+                </div>
+
+                <div>
+                    <label for="phone">Phone</label><br>
+                    <input id="phone" name="phone" type="tel" pattern="[\d\s()+-]*" autocomplete="tel" />
+                </div>
+            </fieldset>
+
+            <div>
+                <input id="terms" name="terms" type="checkbox" required />
+                <label for="terms">I agree to the terms and privacy policy</label>
+            </div>
+
+            <div>
+                <button type="submit">Register</button>
+            </div>
+
+        </form>
+
+        <p>Already have an account? <a href="login-page.html">Log in</a></p>
+    </main>
+</body>
+</html>
