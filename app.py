@@ -3,13 +3,8 @@ import os
 
 app = Flask(__name__)
 
-# Home route (optional — you can later create an index.html)
-@app.route('/')
-def home():
-    return "Welcome to our Flask project!"
-
 # Login page route
-@app.route('/login')
+@app.route('/')
 def login():
     return render_template('login-page.html')
 
