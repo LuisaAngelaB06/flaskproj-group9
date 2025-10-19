@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="../static/login-style.css">
 </head>
 <body>
-    <h1>Login</h1>
-    <form action="/login" method="post">    
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="Login">
-    </form>
-        <p>Don't have an account? <a href="register-page.html">Register here</a>.</p>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="/register">Register here</a>.</p>
+    </div>
 </body>
 </html>
