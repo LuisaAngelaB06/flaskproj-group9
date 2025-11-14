@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Register</title>
-    <link rel="stylesheet" href="../static/register-style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='register-style.css') }}">
 </head>
 <body>
     <div class="background">
@@ -21,7 +21,7 @@
     <main>
         <h1>Create an account</h1>
 
-        <form action="/register" method="post" autocomplete="on">
+    <form action="{{ url_for('register') }}" method="post" autocomplete="on">
             <fieldset>
                 <legend>Account details</legend>
 
@@ -76,7 +76,7 @@
             </div>
         </form>
 
-        <p>Already have an account? <a href="../templates/login-page.html">Log in</a></p>
+    <p>Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
     </main>
 </body>
 </html>

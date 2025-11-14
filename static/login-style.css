@@ -1,62 +1,236 @@
-     
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
+/* ---------- Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .login-container {
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px;
-    }
+/* ---------- Body & Background ---------- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #eaf2ff 0%, #ffffff 100%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  color: #333;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
 
-    .login-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
+/* ---------- Fade-in ---------- */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0 15px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+/* ---------- Wave Background ---------- */
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 0;
+}
 
-    button {
-      width: 100%;
-      padding: 10px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+.wave-svg, .wave2-svg {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 300px;
+  left: -50%;
+  z-index: 0;
+}
 
-    button:hover {
-      background-color: #45a049;
-    }
+.wave-svg path {
+  fill: rgba(0, 123, 255, 0.1);
+  animation: waveVertical 8s ease-in-out infinite, shimmer 3s linear infinite;
+  mask-image: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.2) 100%);
+  mask-repeat: repeat-x;
+}
 
-    .login-container p {
-      text-align: center;
-      font-size: 14px;
-    }
+.wave2-svg path {
+  fill: rgba(0, 123, 255, 0.15);
+  animation: waveVertical 12s ease-in-out infinite, shimmer 3s linear infinite;
+  animation-delay: -2s;
+  mask-image: linear-gradient(120deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.2) 100%);
+  mask-repeat: repeat-x;
+}
 
-    .login-container a {
-      color: #4CAF50;
-      text-decoration: none;
-    }
+@keyframes waveVertical {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-10px) translateX(-25%); }
+}
 
-    .login-container a:hover {
-      text-decoration: underline;
-    }
+@keyframes shimmer {
+  0% { mask-position: -200px 0; }
+  100% { mask-position: 200px 0; }
+}
+
+/* ---------- Main Card ---------- */
+.card-wrapper {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  padding: 30px 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: floatCard 6s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  box-sizing: border-box;
+  margin: 20px;
+  scroll-behavior: smooth;
+}
+
+.card-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(0,123,255,0.3);
+  border-radius: 3px;
+}
+
+.card-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* ---------- Headings ---------- */
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+/* ---------- Input Groups ---------- */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  font-size: 14px;
+  color: #555;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 12px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0,123,255,0.3);
+}
+
+/* ---------- Buttons ---------- */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.2), rgba(255,255,255,0.5), rgba(255,255,255,0.2));
+  transform: skewX(-20deg);
+  animation: buttonShimmer 2.5s infinite;
+}
+
+@keyframes buttonShimmer {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+
+button:hover {
+  background: linear-gradient(90deg, #0069d9, #0049a3);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
+
+/* ---------- Footer Text ---------- */
+.switch-text {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.switch-text a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.switch-text a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Error Messages ---------- */
+.error-message {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+.input-group.error input {
+  border-color: #dc3545;
+}
+
+.input-group.error .error-message {
+  display: block;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .card-wrapper {
+    padding: 25px 20px;
+    width: 90%;
+    max-height: 95vh;
+    border-radius: 15px;
+    margin: 15px;
+  }
+}

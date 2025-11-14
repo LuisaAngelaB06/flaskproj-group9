@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link rel="stylesheet" href="../static/login-style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='login-style.css') }}">
 </head>
 <body>
   <div class="background">
@@ -24,22 +24,56 @@
       <h2>Login</h2>
       <p class="subtitle">Sign in to continue</p>
 
-      <form action="/login" method="post">
+      <form action="{{ url_for('login') }}" method="post" id="loginForm">
         <div class="input-group">
           <label for="username">Username</label>
           <input id="username" name="username" type="text" required autocomplete="username">
+          <div class="error-message" id="usernameError"></div>
         </div>
 
         <div class="input-group">
           <label for="password">Password</label>
           <input id="password" name="password" type="password" required autocomplete="current-password">
+          <div class="error-message" id="passwordError"></div>
         </div>
 
         <button type="submit">Sign In</button>
 
-        <p class="switch-text">Don't have an account? <a href="../templates/register-page.html">Register</a></p>
+        <p class="switch-text">Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
       </form>
     </div>
   </div>
+
+  <script>
+    // Basic form validation
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      let isValid = true;
+      const username = document.getElementById('username');
+      const password = document.getElementById('password');
+      
+      // Reset errors
+      document.querySelectorAll('.input-group').forEach(group => {
+        group.classList.remove('error');
+      });
+      
+      // Validate username
+      if (username.value.trim().length < 3) {
+        document.getElementById('usernameError').textContent = 'Username must be at least 3 characters';
+        username.parentElement.classList.add('error');
+        isValid = false;
+      }
+      
+      // Validate password
+      if (password.value.length < 8) {
+        document.getElementById('passwordError').textContent = 'Password must be at least 8 characters';
+        password.parentElement.classList.add('error');
+        isValid = false;
+      }
+      
+      if (!isValid) {
+        e.preventDefault();
+      }
+    });
+  </script>
 </body>
 </html>
