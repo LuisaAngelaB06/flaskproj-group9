@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="login-style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="../static/login-style.css">
 </head>
 <body>
-    <h1>Login</h1>
-    <form action="/login" method="post">    
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
-        <input type="submit" value="Login">
-    </form>
-        <p>Don't have an account? <a href="register-page.html">Register here</a>.</p>
+  <div class="background">
+    <!-- Wave 1 -->
+    <svg class="wave-svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+      <path d="M0,100 C300,200 900,0 1200,100 L1200,200 L0,200 Z"></path>
+    </svg>
+
+    <!-- Wave 2 -->
+    <svg class="wave2-svg" viewBox="0 0 1200 200" preserveAspectRatio="none">
+      <path d="M0,120 C400,0 800,220 1200,120 L1200,200 L0,200 Z"></path>
+    </svg>
+  </div>
+
+  <div class="card-wrapper">
+    <div class="login-card">
+      <h2>Login</h2>
+      <p class="subtitle">Sign in to continue</p>
+
+      <form action="/login" method="post">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" required autocomplete="username">
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" required autocomplete="current-password">
+        </div>
+
+        <button type="submit">Sign In</button>
+
+        <p class="switch-text">Don't have an account? <a href="../templates/register-page.html">Register</a></p>
+      </form>
+    </div>
+  </div>
 </body>
 </html>
