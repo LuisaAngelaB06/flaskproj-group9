@@ -1,3 +1,8 @@
+from dotenv import Load_dotenv
+import os
+
+Load_dotenv()
+
 from flask import Flask, render_template
 import os
 
