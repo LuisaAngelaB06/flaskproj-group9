@@ -1,7 +1,14 @@
 from flask import Flask, render_template
+from dotenv import load_dotenv
+from models.db import db
+
 import os
 
+load_dotenv()
+
 app = Flask(__name__)
+
+db.init_app(app)
 
 # Login page route
 @app.route('/')
